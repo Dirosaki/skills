@@ -1,0 +1,23 @@
+{
+  "skill_name": "doc-yet",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This is a Turborepo with `apps/web`, `apps/api`, `packages/ui`, and `packages/config`. Document the repo in `.agents`, create a global documentation hub plus local `.agents` for `apps/web`, `apps/api`, and `packages/ui`, improve the existing Portuguese `README.md` without changing its language, and generate bridge files for Cursor, Claude, Codex, and Gemini.",
+      "expected_output": "Creates or updates `.agents/project` global docs, adds local `.agents` only for the meaningful app and package boundaries, keeps the root README in Portuguese, documents the UI package as a design-system boundary, and generates thin bridge files that point back to the canonical docs.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "This repository is a single React frontend with `src/features/billing`, `src/features/customers`, and `src/features/reporting`. It has Storybook, Tailwind theme files, and shared primitives under `src/components/ui`. Inspect the repo, ask a few short questions, then create or update documentation in `.agents` plus local `.agents` for the major feature folders and the shared UI layer. Also improve `README.md` if it exists.",
+      "expected_output": "Detects a feature-based frontend, creates global docs plus local `.agents` for major features or shared UI boundaries, generates `design-system.md` and `design-tokens.md`, uses Mermaid in architecture docs, and improves the root README without duplicating all internal detail.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Document this backend service repository. It has FastAPI routes, Alembic migrations, Redis workers, and OpenAPI schemas, but no root `README.md`. Build the core docs in `.agents`, create any high-value local `.agents` scopes if needed, generate `api-contracts.md`, `data-model.md`, `deployment-and-environments.md`, and `auth-and-security.md`, then create the bridge files for Cursor, Claude, Codex, and Gemini.",
+      "expected_output": "Creates the required global docs in `.agents/project`, adds local `.agents` only if a subsystem like a worker or service boundary deserves one, creates the backend-focused optional docs, generates an English root README, and writes bridge files that keep the tool-specific entrypoints thin.",
+      "files": []
+    }
+  ]
+}
