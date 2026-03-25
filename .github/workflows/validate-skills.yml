@@ -1,0 +1,39 @@
+name: Validate Skills
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install validator dependencies
+        run: pip install pyyaml
+
+      - name: Validate all skills
+        shell: bash
+        run: |
+          set -euo pipefail
+          found=0
+          while IFS= read -r skill; do
+            found=1
+            echo "Validating ${skill}"
+            python3 "${GITHUB_WORKSPACE}/.github/scripts/quick_validate.py" "${skill}"
+          done < <(find skills -mindepth 1 -maxdepth 1 -type d | sort)
+
+          if [ "${found}" -eq 0 ]; then
+            echo "No skills found under skills/"
+            exit 1
+          fi

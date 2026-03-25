@@ -1,0 +1,4 @@
+interface:
+  display_name: "Doc Yet"
+  short_description: "Document repos into .agents and AI bridges"
+  default_prompt: "Use $doc-yet to document this repository into .agents and refresh bridge files."

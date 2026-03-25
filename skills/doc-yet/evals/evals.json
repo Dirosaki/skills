@@ -1,0 +1,116 @@
+{
+  "skill_name": "doc-yet",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "This is a Turborepo with `apps/web`, `apps/api`, `packages/ui`, and `packages/config`. Document the repo in `.agents`, create a global documentation hub plus local `.agents` for `apps/web`, `apps/api`, and `packages/ui`, improve the existing Portuguese `README.md` without changing its language, and generate bridge files for Cursor, Claude, Codex, and Gemini.",
+      "expected_output": "Creates or updates the required `.agents/project` docs, adds local `.agents` only for meaningful app and package boundaries, keeps the root README in Portuguese, documents the UI package as a design-system boundary, and generates thin bridge files that point back to the canonical docs.",
+      "files": [
+        ".agents/project/documentation-index.md",
+        ".agents/project/project-overview.md",
+        ".agents/project/architecture.md",
+        ".agents/project/tech-stack.md",
+        ".agents/project/gap-analysis.md",
+        "apps/web/.agents/documentation-index.md",
+        "apps/api/.agents/documentation-index.md",
+        "packages/ui/.agents/documentation-index.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md",
+        ".cursor/rules/doc-yet-project-docs.mdc",
+        ".claude/commands/doc-yet.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This repository is a single React frontend with `src/features/billing`, `src/features/customers`, and `src/features/reporting`. It has Storybook, Tailwind theme files, and shared primitives under `src/components/ui`. Inspect the repo, ask a few short questions, then create or update documentation in `.agents` plus local `.agents` for the major feature folders and the shared UI layer. Also improve `README.md` if it exists.",
+      "expected_output": "Detects a feature-based frontend, creates global docs plus local `.agents` for major features and shared UI boundaries, generates `design-system.md` and `design-tokens.md`, uses Mermaid in architecture docs, and improves the root README without duplicating all internal detail.",
+      "files": [
+        ".agents/project/documentation-index.md",
+        ".agents/project/architecture.md",
+        ".agents/project/design-system.md",
+        ".agents/project/design-tokens.md",
+        "src/features/billing/.agents/documentation-index.md",
+        "src/features/customers/.agents/documentation-index.md",
+        "src/features/reporting/.agents/documentation-index.md",
+        "src/components/ui/.agents/documentation-index.md",
+        "AGENTS.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Document this backend service repository. It has FastAPI routes, Alembic migrations, Redis workers, and OpenAPI schemas, but no root `README.md`. Build the core docs in `.agents`, create any high-value local `.agents` scopes if needed, generate `api-contracts.md`, `data-model.md`, `deployment-and-environments.md`, and `auth-and-security.md`, then create the bridge files for Cursor, Claude, Codex, and Gemini.",
+      "expected_output": "Creates the required global docs in `.agents/project`, adds local `.agents` only if a subsystem like a worker deserves one, creates the backend-focused optional docs, generates an English root README, and writes bridge files that keep the tool-specific entrypoints thin.",
+      "files": [
+        ".agents/project/documentation-index.md",
+        ".agents/project/project-overview.md",
+        ".agents/project/architecture.md",
+        ".agents/project/tech-stack.md",
+        ".agents/project/gap-analysis.md",
+        ".agents/project/api-contracts.md",
+        ".agents/project/data-model.md",
+        ".agents/project/deployment-and-environments.md",
+        ".agents/project/auth-and-security.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "GEMINI.md",
+        ".cursor/rules/doc-yet-project-docs.mdc",
+        ".claude/commands/doc-yet.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "This repository already has `AGENTS.md`, `CLAUDE.md`, and `docs/architecture.md` with strong project-specific instructions. Create the canonical `.agents/project` docs, improve the root `README.md`, and refresh bridge files without deleting existing project rules.",
+      "expected_output": "Creates `.agents/project` docs, preserves strong existing instructions in `AGENTS.md` and `CLAUDE.md`, adds `.agents` discovery guidance through a merge instead of a rewrite, keeps the bridge files thin, and records any inherited docs worth preserving in the gap analysis.",
+      "files": [
+        ".agents/project/documentation-index.md",
+        ".agents/project/gap-analysis.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Document this internal platform repo, but do not expose secrets, internal URLs, queue names, or operational credentials. The repo contains auth middleware, RBAC policies, deployment manifests, and environment-specific config. Create the docs in `.agents`, improve the existing English `README.md`, and clearly mark any assumptions.",
+      "expected_output": "Documents the platform repo without leaking sensitive details, creates `auth-and-security.md` and `deployment-and-environments.md` with redacted or generalized sensitive information, keeps assumptions explicit, and improves the existing English README.",
+      "files": [
+        ".agents/project/documentation-index.md",
+        ".agents/project/gap-analysis.md",
+        ".agents/project/auth-and-security.md",
+        ".agents/project/deployment-and-environments.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "This is a mixed monorepo with `apps/web`, `services/api`, `services/worker`, `packages/ui`, and `packages/analytics`. Document the global architecture, create local `.agents` only for the web app, API service, worker service, and UI package, improve the root `README.md`, and include integration and deployment docs.",
+      "expected_output": "Creates global docs in `.agents/project`, adds local `.agents` only for high-value deployable or shared UI boundaries, creates `integrations.md` and `deployment-and-environments.md`, links global and local indexes both ways, and avoids creating local docs for low-value packages like config-only modules.",
+      "files": [
+        ".agents/project/documentation-index.md",
+        ".agents/project/architecture.md",
+        ".agents/project/integrations.md",
+        ".agents/project/deployment-and-environments.md",
+        "apps/web/.agents/documentation-index.md",
+        "services/api/.agents/documentation-index.md",
+        "services/worker/.agents/documentation-index.md",
+        "packages/ui/.agents/documentation-index.md",
+        "README.md"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "This repository has a good `docs/` folder with onboarding and architecture notes, but no `.agents/` yet. Review the existing docs, preserve what is still accurate, create `.agents/project` as the canonical internal layer, improve the root `README.md`, and avoid rewriting good material just for style.",
+      "expected_output": "Creates `.agents/project` docs, references existing `docs/` material where it is still useful, captures outdated or missing areas in the gap analysis, avoids style-only rewrites, and makes the root README a clean public entrypoint to the deeper documentation.",
+      "files": [
+        ".agents/project/documentation-index.md",
+        ".agents/project/project-overview.md",
+        ".agents/project/gap-analysis.md",
+        "README.md"
+      ]
+    }
+  ]
+}
